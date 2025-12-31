@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pandas
+scikit-learn
+streamlit
+python-multipart
+numpy
+requests

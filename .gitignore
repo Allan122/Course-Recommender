@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+myenv/
+venv/
+.DS_Store
+data/reviews.csv
