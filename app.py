@@ -9,7 +9,6 @@ st.title("📚 AI-Powered Course Recommender")
 st.markdown("Select a course you liked, and our AI will suggest similar upskilling options.")
 
 # 2. Load Data (Just to get the list of names for the dropdown)
-# In a real big app, we might ask the API for this list, but loading CSV here is faster for now.
 @st.cache_data
 def load_data():
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -26,8 +25,11 @@ selected_course = st.selectbox("Select a Course:", course_names)
 if st.button("Get Recommendations"):
     with st.spinner("Consulting the AI..."):
         try:
-            # This is where the Frontend talks to the Backend (API)
-            response = requests.get(f"http://127.0.0.1:8000/recommend?course_name={selected_course}")
+            # --- CORRECTED SECTION START ---
+            # Notice how these lines are indented inside the 'try' block
+            API_URL = "https://allan-course-api.onrender.com"
+            response = requests.get(f"{API_URL}/recommend?course_name={selected_course}")
+            # --- CORRECTED SECTION END ---
             
             if response.status_code == 200:
                 data = response.json()
